@@ -5,6 +5,28 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<style>
+			/* Forzar el mismo tamaño para las imágenes de los proyectos */
+			.work-item .image.thumb img {
+				width: 100%;
+				aspect-ratio: 16/9; /* Puedes cambiarlo a 4/3 o 1/1 si prefieres otro formato */
+				object-fit: cover;
+			}
+
+			/* Forzar la misma altura mínima para los títulos de los proyectos (equivale a 2 líneas) */
+			.work-item h3 {
+				min-height: 3em; 
+			}
+
+			/* Alinear los botones al fondo haciendo que la descripción ocupe el espacio sobrante */
+			.work-item {
+				display: flex;
+				flex-direction: column;
+			}
+			.work-item p.texto-justificado {
+				flex-grow: 1;
+			}
+		</style>
 	</head>
 	<body class="is-preload">
 
@@ -38,20 +60,28 @@
 							<article class="col-6 col-12-xsmall work-item">
 								<a href="images/fulls/01.jpg" class="image fit thumb"><img src="images/thumbs/01.jpg" alt="" /></a>
 								<h3><a href="https://github.com/imonclus/MundoViolin.git">MundoViolin</a></h3>
-								<p class="texto-justificado">Proyecto dedicado a hacer un gestor de información sobre el violín.</p>
-								<ul class="actions" style="margin-top: -1em; margin-bottom: 1em;">
+								<ul class="actions" style="margin-bottom: 1em;">
 									<li><span class="button small disabled icon brands fa-java" style="padding: 0 1em;">Java</span></li>
 								</ul>
+								<p class="texto-justificado" style="margin-bottom: 0.5em;">MundoViolin es una aplicación de escritorio robusta desarrollada en Java puro (Swing) diseñada para gestionar, explorar y aprender sobre el mundo del violín. Funciona como un catálogo interactivo, diccionario y herramienta educativa con soporte multiusuario y persistencia de datos local.</p>
+								<p style="font-size: 0.75em; margin-bottom: 1.5em;"><em>Nota: Necesitas tener <a href="https://www.java.com/es/download/" target="_blank">Java instalado</a> en tu equipo para poder ejecutar este archivo.</em></p>
 								<ul class="actions">
 									<li><a href="PEGAR_AQUI_EL_ENLACE_COPIADO" class="button small icon solid fa-download">Descargar .jar</a></li>
 								</ul>
-								<p style="font-size: 0.75em; margin-top: -1em;"><em>Nota: Necesitas tener <a href="https://www.java.com/es/download/" target="_blank">Java instalado</a> en tu equipo para poder ejecutar este archivo.</em></p>
 							</article>
 
 							<article class="col-6 col-12-xsmall work-item">
 								<a href="images/fulls/02.jpg" class="image fit thumb"><img src="images/thumbs/02.jpg" alt="Próximamente" /></a>
-								<h3>Próximamente...</h3>
-								<p class="texto-justificado">Actualmente estoy trabajando en nuevas ideas y recuperando código antiguo. Pronto publicaré más repositorios aquí.</p>
+								<h3><a href="https://github.com/imonclus/buscador-cafe/tree/main">Buscador de Café</a></h3>
+								<ul class="actions" style="margin-bottom: 1em;">
+									<li><span class="button small disabled icon brands fa-html5" style="padding: 0 1em;">HTML5</span></li>
+									<li><span class="button small disabled icon brands fa-css3-alt" style="padding: 0 1em;">CSS3</span></li>
+									<li><span class="button small disabled icon brands fa-js" style="padding: 0 1em;">JavaScript</span></li>
+								</ul>
+								<p class="texto-justificado">Una aplicación web interactiva y responsiva diseñada para buscar, descubrir y visualizar información detallada sobre diferentes tipos de café. Este proyecto utiliza Google Sheets como base de datos (Backend) para gestionar el inventario de cafés de forma sencilla y gratuita.</p>
+								<ul class="actions">
+									<li><a href="https://imonclus.github.io/buscador-cafe/" target="_blank" class="button small icon solid fa-external-link-alt">Ver en funcionamiento</a></li>
+								</ul>
 							</article>
 						</div>
 					</section>
