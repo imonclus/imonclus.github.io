@@ -26,6 +26,47 @@
 			.work-item p.texto-justificado {
 				flex-grow: 1;
 			}
+
+			/* Hacer que las tarjetas de todas las filas tengan la misma altura */
+			@media screen and (min-width: 481px) {
+				#two .row {
+					display: grid;
+					grid-template-columns: repeat(2, 1fr);
+					grid-auto-rows: 1fr;
+				}
+				#two .row > * {
+					width: 100% !important;
+				}
+			}
+
+			/* Etiquetas de tecnología */
+			ul.actions span.tech-tag {
+				display: inline-flex;
+				align-items: center;
+				font-size: 0.7em;
+				font-weight: 600;
+				padding: 0.3em 0.8em;
+				border-radius: 0.35em; /* Estilo rectangular (acorde al diseño del tema) */
+				color: #fff !important;
+				letter-spacing: 0.05em;
+				line-height: 1.5;
+			}
+			ul.actions span.tech-tag::before {
+				margin-right: 0.4em;
+				font-size: 1.1em;
+			}
+			/* Colores de marca para las etiquetas */
+			.tag-java { background-color: #e76f00; }
+			.tag-html { background-color: #e34f26; }
+			.tag-css { background-color: #1572b6; }
+			.tag-js { background-color: #f7df1e; color: #000 !important; } /* Texto negro para contraste */
+			.tag-react { background-color: #61dafb; color: #000 !important; }
+			.tag-node { background-color: #339933; }
+			.tag-ts { background-color: #3178c6; }
+			.tag-python { background-color: #306998; }
+			.tag-php { background-color: #777bb4; }
+			.tag-cpp { background-color: #00599c; }
+			.tag-firebase { background-color: #ffca28; color: #000 !important; }
 		</style>
 	</head>
 	<body class="is-preload">
@@ -61,7 +102,7 @@
 								<a href="images/fulls/01.jpg" class="image fit thumb"><img src="images/thumbs/01.jpg" alt="" /></a>
 								<h3><a href="https://github.com/imonclus/MundoViolin.git">MundoViolin</a></h3>
 								<ul class="actions" style="margin-bottom: 1em;">
-									<li><span class="button small disabled icon brands fa-java" style="padding: 0 1em;">Java</span></li>
+									<li><span class="tech-tag tag-java icon brands fa-java">Java</span></li>
 								</ul>
 								<p class="texto-justificado" style="margin-bottom: 0.5em;">MundoViolin es una aplicación de escritorio robusta desarrollada en Java puro (Swing) diseñada para gestionar, explorar y aprender sobre el mundo del violín. Funciona como un catálogo interactivo, diccionario y herramienta educativa con soporte multiusuario y persistencia de datos local.</p>
 								<p style="font-size: 0.75em; margin-bottom: 1.5em;"><em>Nota: Necesitas tener <a href="https://www.java.com/es/download/" target="_blank">Java instalado</a> en tu equipo para poder ejecutar este archivo.</em></p>
@@ -71,18 +112,35 @@
 							</article>
 
 							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/fulls/02.jpg" class="image fit thumb"><img src="images/thumbs/02.jpg" alt="Próximamente" /></a>
+								<a href="images/fulls/02.jpg" class="image fit thumb"><img src="images/thumbs/02.jpg" alt="Buscador de café" /></a>
 								<h3><a href="https://github.com/imonclus/buscador-cafe/tree/main">Buscador de Café</a></h3>
 								<ul class="actions" style="margin-bottom: 1em;">
-									<li><span class="button small disabled icon brands fa-html5" style="padding: 0 1em;">HTML5</span></li>
-									<li><span class="button small disabled icon brands fa-css3-alt" style="padding: 0 1em;">CSS3</span></li>
-									<li><span class="button small disabled icon brands fa-js" style="padding: 0 1em;">JavaScript</span></li>
+									<li><span class="tech-tag tag-html icon brands fa-html5">HTML5</span></li>
+									<li><span class="tech-tag tag-css icon brands fa-css3-alt">CSS3</span></li>
+									<li><span class="tech-tag tag-js icon brands fa-js">JavaScript</span></li>
 								</ul>
 								<p class="texto-justificado">Una aplicación web interactiva y responsiva diseñada para buscar, descubrir y visualizar información detallada sobre diferentes tipos de café. Este proyecto utiliza Google Sheets como base de datos (Backend) para gestionar el inventario de cafés de forma sencilla y gratuita.</p>
 								<ul class="actions">
 									<li><a href="https://imonclus.github.io/buscador-cafe/" target="_blank" class="button small icon solid fa-external-link-alt">Ver en funcionamiento</a></li>
 								</ul>
 							</article>
+							
+							<article class="col-6 col-12-xsmall work-item">
+								<a href="images/fulls/03.jpg" class="image fit thumb"><img src="images/thumbs/03.jpg" alt="Un día como hoy" /></a>
+								<h3><a href="https://github.com/imonclus/Sucedio">Un día como hoy</a></h3>
+								<ul class="actions" style="margin-bottom: 1em;">
+									<li><span class="tech-tag tag-react icon brands fa-react">React</span></li>
+									<li><span class="tech-tag tag-node icon brands fa-node-js">Node.js</span></li>
+									<li><span class="tech-tag tag-ts icon solid fa-code">TypeScript</span></li>
+									<li><span class="tech-tag tag-firebase icon solid fa-database">Firebase</span></li>
+								</ul>
+								<p class="texto-justificado">Un Día Como Hoy es una aplicación web interactiva que permite a los usuarios explorar la historia universal viajando a través del tiempo. Descubre qué eventos importantes, nacimientos y fallecimientos ocurrieron en cualquier fecha del calendario.</p>
+								<ul class="actions">
+									<li><a href="PEGAR_AQUI_EL_ENLACE_COPIADO" class="button small icon solid fa-download">Descargar .jar</a></li>
+									<li><a href="https://un-d-a-como-hoy-591830331546.europe-west2.run.app/" target="_blank" class="button small icon solid fa-external-link-alt">Ver en funcionamiento</a></li>
+								</ul>
+							</article>
+							
 						</div>
 					</section>
 
@@ -116,25 +174,25 @@
 		========================================================================
 		Puedes copiar las líneas <li> y combinarlas dentro de un único <ul> 
 		si un proyecto usa varias tecnologías a la vez, por ejemplo:
-		<ul class="actions" style="margin-top: -1em; margin-bottom: 1em;">
-			<li><span class="button small disabled icon brands fa-html5" style="padding: 0 1em;">HTML5</span></li>
-			<li><span class="button small disabled icon brands fa-css3-alt" style="padding: 0 1em;">CSS3</span></li>
-			<li><span class="button small disabled icon brands fa-js" style="padding: 0 1em;">JavaScript</span></li>
+		<ul class="actions" style="margin-bottom: 1em;">
+			<li><span class="tech-tag tag-html icon brands fa-html5">HTML5</span></li>
+			<li><span class="tech-tag tag-css icon brands fa-css3-alt">CSS3</span></li>
+			<li><span class="tech-tag tag-js icon brands fa-js">JavaScript</span></li>
 		</ul>
 
 		Otras tecnologías individuales:
 
 		Python:
-		<ul class="actions" style="margin-top: -1em; margin-bottom: 1em;"><li><span class="button small disabled icon brands fa-python" style="padding: 0 1em;">Python</span></li></ul>
+		<ul class="actions" style="margin-bottom: 1em;"><li><span class="tech-tag tag-python icon brands fa-python">Python</span></li></ul>
 
 		PHP:
-		<ul class="actions" style="margin-top: -1em; margin-bottom: 1em;"><li><span class="button small disabled icon brands fa-php" style="padding: 0 1em;">PHP</span></li></ul>
+		<ul class="actions" style="margin-bottom: 1em;"><li><span class="tech-tag tag-php icon brands fa-php">PHP</span></li></ul>
 
 		React:
-		<ul class="actions" style="margin-top: -1em; margin-bottom: 1em;"><li><span class="button small disabled icon brands fa-react" style="padding: 0 1em;">React</span></li></ul>
+		<ul class="actions" style="margin-bottom: 1em;"><li><span class="tech-tag tag-react icon brands fa-react">React</span></li></ul>
 
 		C / C++ (Usando un icono de código genérico):
-		<ul class="actions" style="margin-top: -1em; margin-bottom: 1em;"><li><span class="button small disabled icon solid fa-code" style="padding: 0 1em;">C / C++</span></li></ul>
+		<ul class="actions" style="margin-bottom: 1em;"><li><span class="tech-tag tag-cpp icon solid fa-code">C / C++</span></li></ul>
 		========================================================================
 		-->
 	</body>
