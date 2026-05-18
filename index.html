@@ -7,10 +7,17 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<style>
 			/* Forzar el mismo tamaño para las imágenes de los proyectos */
-			.work-item .image.thumb img {
+			.work-item .image.thumb {
+				display: block;
 				width: 100%;
 				aspect-ratio: 16/9; /* Puedes cambiarlo a 4/3 o 1/1 si prefieres otro formato */
+				flex-shrink: 0; /* Evita que la imagen se encoja si la tarjeta tiene mucho texto */								
+			}
+			.work-item .image.thumb img {
+				width: 100%;
+				height: 100%;
 				object-fit: cover;
+				display: block; /* Elimina el margen residual debajo de la imagen */
 			}
 
 			/* Forzar la misma altura mínima para los títulos de los proyectos (equivale a 2 líneas) */
@@ -99,7 +106,7 @@
 						<h2>Proyectos</h2>
 						<div class="row">
 							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/fulls/01.jpg" class="image fit thumb"><img src="images/thumbs/01.jpg" alt="" /></a>
+								<a href="images/fulls/01.jpg" class="image fit thumb"><img src="images/thumbs/01.jpg" alt="Mundo violín" /></a>
 								<h3><a href="https://github.com/imonclus/MundoViolin.git">MundoViolin</a></h3>
 								<ul class="actions" style="margin-bottom: 1em;">
 									<li><span class="tech-tag tag-java icon brands fa-java">Java</span></li>
