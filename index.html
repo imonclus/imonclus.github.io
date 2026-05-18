@@ -34,15 +34,18 @@
 				flex-grow: 1;
 			}
 
-			/* Hacer que las tarjetas de todas las filas tengan la misma altura */
+			/* Hacer que las tarjetas de todas las filas tengan la misma altura y anchura exacta */
 			@media screen and (min-width: 481px) {
 				#two .row {
 					display: grid;
-					grid-template-columns: repeat(2, 1fr);
+					grid-template-columns: repeat(2, minmax(0, 1fr));
 					grid-auto-rows: 1fr;
+					gap: 2em; /* Define el espacio entre tarjetas */
+					margin: 0; /* Anula el margen negativo del sistema de HTML5 UP */
 				}
 				#two .row > * {
 					width: 100% !important;
+					padding: 0 !important; /* Anula el padding del sistema de HTML5 UP */
 				}
 			}
 
