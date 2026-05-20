@@ -19,6 +19,7 @@ Desde este sitio puedes acceder al código fuente y a las demostraciones (cuando
 - **Fibonacci**: Proyecto educativo sobre el Número Áureo y la Sucesión de Fibonacci.
 - **MozartAPP**: Aplicación Android en Kotlin para explorar el catálogo Köchel (KV) de Mozart.
 - **Gestor de Conocimiento Filosófico**: Aplicación de escritorio estructurada para organizar información filosófica.
+- **Generador de Historias Bilingüe**: Aplicación web impulsada por IA (Gemini) para aprender búlgaro de forma entretenida.
 
 ## 🛠️ Tecnologías utilizadas en este sitio
 
