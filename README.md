@@ -20,6 +20,7 @@ Desde este sitio puedes acceder al código fuente y a las demostraciones (cuando
 - **MozartAPP**: Aplicación Android en Kotlin para explorar el catálogo Köchel (KV) de Mozart.
 - **Gestor de Conocimiento Filosófico**: Aplicación de escritorio estructurada para organizar información filosófica.
 - **Generador de Historias Bilingüe**: Aplicación web impulsada por IA (Gemini) para aprender búlgaro de forma entretenida.
+- **Máquina de Pruebas Automática de Scripts (Docker)**: Entorno universal para ejecutar y probar scripts (PowerShell, VBScript, Shell, Python) en contenedores Docker de forma automática.
 
 ## 🛠️ Tecnologías utilizadas en este sitio
 
@@ -29,7 +30,7 @@ La página web en sí está construida de manera sencilla, estática y ligera, u
 - JavaScript y jQuery
 
 ### Etiquetas Tecnológicas Personalizadas
-El sitio cuenta con un sistema de insignias (tags) desarrollado a medida para identificar visualmente los lenguajes y frameworks de cada proyecto (Java, React, JS, HTML, CSS, Kotlin, etc.) respetando la estética minimalista del entorno.
+El sitio cuenta con un sistema de insignias (tags) desarrollado a medida para identificar visualmente los lenguajes y frameworks de cada proyecto (Java, React, JS, HTML, CSS, Kotlin, PowerShell, Docker, etc.) respetando la estética minimalista del entorno.
 
 ## 📄 Créditos y Licencia
 
