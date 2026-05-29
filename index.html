@@ -1,9 +1,12 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Sitio de Ignacio en GitHub</title>
+		<title>Ignacio | Portafolio de Proyectos y Desarrollo Educativo</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="description" content="Portafolio personal de Ignacio. Catálogo de proyectos educativos, aplicaciones y experimentos de desarrollo de software utilizando diversas tecnologías." />
+		<meta name="keywords" content="programación, desarrollo de software, proyectos educativos, portafolio, GitHub, Java, JavaScript, HTML5, React, Python, Docker" />
+		<meta name="author" content="Ignacio" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<style>
 			/* Forzar el mismo tamaño para las imágenes de los proyectos */
@@ -12,6 +15,12 @@
 				width: 100%;
 				aspect-ratio: 16/9; /* Puedes cambiarlo a 4/3 o 1/1 si prefieres otro formato */
 				flex-shrink: 0; /* Evita que la imagen se encoja si la tarjeta tiene mucho texto */								
+				transition: transform 0.3s ease, box-shadow 0.3s ease; /* Prepara la animación fluida en la imagen */
+				border-radius: 0.35em; /* Necesario para que la sombra se adapte a los bordes curvos */
+			}
+			.work-item .image.thumb:hover {
+				transform: translateY(-8px); /* Eleva la imagen 8 píxeles hacia arriba */
+				box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15); /* Crea una sombra suave */
 			}
 			.work-item .image.thumb img {
 				width: 100%;
@@ -29,9 +38,10 @@
 			.work-item {
 				display: flex;
 				flex-direction: column;
+				height: 100%; /* Asegura que la tarjeta use toda la altura disponible en la fila Grid */
 			}
-			.work-item p.texto-justificado {
-				flex-grow: 1;
+			.work-item > ul.actions:last-child {
+				margin-top: auto; /* Empuja siempre la lista de botones al extremo inferior */
 			}
 
 			/* Hacer que las tarjetas de todas las filas tengan la misma altura y anchura exacta */
@@ -49,6 +59,12 @@
 				}
 			}
 
+			/* Margen para la lista de etiquetas, evita usar style="margin-bottom: 1em" en el HTML */
+			.work-item h3 + ul.actions {
+				margin-bottom: 1em !important;
+				min-height: 3.5em; /* Reserva espacio para 2 líneas de etiquetas, alineando los textos inferiores */
+			}
+
 			/* Forzar que las listas de etiquetas y botones salten de línea si no caben */
 			.work-item ul.actions {
 				flex-wrap: wrap;
@@ -58,9 +74,9 @@
 			ul.actions span.tech-tag {
 				display: inline-flex;
 				align-items: center;
-				font-size: 0.7em;
+				font-size: 0.65em; /* Reducidas ligeramente para que quepan más por línea */
 				font-weight: 600;
-				padding: 0.3em 0.8em;
+				padding: 0.25em 0.7em; /* Ajuste proporcional del relleno */
 				border-radius: 0.35em; /* Estilo rectangular (acorde al diseño del tema) */
 				color: #fff !important;
 				letter-spacing: 0.05em;
@@ -70,25 +86,56 @@
 				margin-right: 0.4em;
 				font-size: 1.1em;
 			}
+			
+			/* Agrupar etiquetas de colores claros que necesitan texto negro para contrastar */
+			.tag-js, .tag-react, .tag-firebase, .tag-batch, .tag-android-studio, .tag-shell {
+				color: #000 !important;
+			}
+			
 			/* Colores de marca para las etiquetas */
 			.tag-java { background-color: #e76f00; }
 			.tag-html { background-color: #e34f26; }
 			.tag-css { background-color: #1572b6; }
-			.tag-js { background-color: #f7df1e; color: #000 !important; } /* Texto negro para contraste */
-			.tag-react { background-color: #61dafb; color: #000 !important; }
+			.tag-js { background-color: #f7df1e; } 
+			.tag-react { background-color: #61dafb; }
 			.tag-node { background-color: #339933; }
 			.tag-ts { background-color: #3178c6; }
 			.tag-python { background-color: #306998; }
 			.tag-php { background-color: #777bb4; }
 			.tag-cpp { background-color: #00599c; }
-			.tag-firebase { background-color: #ffca28; color: #000 !important; }
-			.tag-batch { background-color: #C1F12E; color: #000 !important; }
+			.tag-firebase { background-color: #ffca28; }
+			.tag-batch { background-color: #C1F12E; }
 			.tag-kotlin { background-color: #7F52FF; }
-			.tag-android-studio { background-color: #3DDC84; color: #000 !important; }
+			.tag-android-studio { background-color: #3DDC84; }
 			.tag-powershell { background-color: #012456; }
 			.tag-vbscript { background-color: #154881; }
-			.tag-shell { background-color: #89e051; color: #000 !important; }
+			.tag-shell { background-color: #89e051; }
 			.tag-docker { background-color: #2496ED; }
+			.tag-jekyll { background-color: #cc0000; }
+			.tag-ruby { background-color: #CC342D; }
+			.tag-scss { background-color: #c6538c; }
+
+			/* Cursor tipo "mano" para indicar que la imagen ampliada se puede cerrar haciendo clic */
+			.poptrox-popup img {
+				cursor: pointer;
+			}
+
+			/* Sombreado profundo y borde claro sutil para destacar la ventana ampliada */
+			.poptrox-popup {
+				box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.15) !important;
+			}
+
+			/* Destacar el título en las imágenes ampliadas */
+			.poptrox-popup .caption {
+				font-size: 1.15em !important; /* Aumenta el tamaño del texto */
+				font-weight: 700 !important; /* Pone la letra en negrita */
+				color: #49bf9d !important; /* Color verde corporativo de tu página */
+			}
+
+			/* Mejoras de visibilidad para el Footer y la barra lateral */
+			#header {
+				overflow-y: auto; /* Permite hacer scroll en la barra lateral si la pantalla es bajita */
+			}
 		</style>
 	</head>
 	<body class="is-preload">
@@ -97,8 +144,13 @@
 			<header id="header">
 				<div class="inner">
 					<a href="#" class="image avatar"><img src="images/avatar.jpg" alt="" /></a>
-					<h1><a href="#" style="border-bottom: none;"><strong>Soy Ignacio</strong></a>, educador.<br />
+					<h1><a href="https://imonclus.github.io/al-folio-main/" target="_blank" rel="noopener noreferrer"><strong>Soy Ignacio</strong></a>, educador.<br />
 					</h1>
+					<ul class="icons">
+						<li><a href="https://github.com/imonclus" target="_blank" class="icon brands fa-github"><span class="label">Github</span></a></li>
+						<li><a href="https://www.linkedin.com/in/imonclus/" target="_blank" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+						<li><a href="mailto:imonclus@gmail.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+					</ul>
 				</div>
 			</header>
 
@@ -123,11 +175,11 @@
 							<article class="col-6 col-12-xsmall work-item">
 								<a href="images/fulls/01.jpg" class="image fit thumb"><img src="images/thumbs/01.jpg" alt="Mundo violín" /></a>
 								<h3><a href="https://github.com/imonclus/MundoViolin.git">MundoViolin</a></h3>
-								<ul class="actions" style="margin-bottom: 1em;">
+								<ul class="actions">
 									<li><span class="tech-tag tag-java icon brands fa-java">Java</span></li>
 								</ul>
-								<p class="texto-justificado" style="margin-bottom: 0.5em;">MundoViolin es una aplicación de escritorio robusta desarrollada en Java puro (Swing) diseñada para gestionar, explorar y aprender sobre el mundo del violín. Funciona como un catálogo interactivo, diccionario y herramienta educativa con soporte multiusuario y persistencia de datos local.</p>
-								<p style="font-size: 0.75em; margin-bottom: 1.5em;"><em>Nota: Necesitas tener <a href="https://www.java.com/es/download/" target="_blank">Java instalado</a> en tu equipo para poder ejecutar este archivo.</em></p>
+								<p class="texto-justificado compact-text">MundoViolin es una aplicación de escritorio robusta desarrollada en Java puro (Swing) diseñada para gestionar, explorar y aprender sobre el mundo del violín. Funciona como un catálogo interactivo, diccionario y herramienta educativa con soporte multiusuario y persistencia de datos local.</p>
+								<p class="project-note"><em>Nota: Necesitas tener <a href="https://www.java.com/es/download/" target="_blank">Java instalado</a> en tu equipo para poder ejecutar este archivo.</em></p>
 								<ul class="actions">
 									<li><a href="https://github.com/imonclus/MundoViolin/releases" target="_blank" class="button small icon solid fa-download">Descargar .jar</a></li>
 								</ul>
@@ -136,7 +188,7 @@
 							<article class="col-6 col-12-xsmall work-item">
 								<a href="images/fulls/02.jpg" class="image fit thumb"><img src="images/thumbs/02.jpg" alt="Buscador de café" /></a>
 								<h3><a href="https://github.com/imonclus/buscador-cafe/tree/main">Buscador de Café</a></h3>
-								<ul class="actions" style="margin-bottom: 1em;">
+								<ul class="actions">
 									<li><span class="tech-tag tag-html icon brands fa-html5">HTML5</span></li>
 									<li><span class="tech-tag tag-css icon brands fa-css3-alt">CSS3</span></li>
 									<li><span class="tech-tag tag-js icon brands fa-js">JavaScript</span></li>
@@ -151,7 +203,7 @@
 							<article class="col-6 col-12-xsmall work-item">
 								<a href="images/fulls/03.jpg" class="image fit thumb"><img src="images/thumbs/03.jpg" alt="Un día como hoy" /></a>
 								<h3><a href="https://github.com/imonclus/Sucedio">Un día como hoy</a></h3>
-								<ul class="actions" style="margin-bottom: 1em;">
+								<ul class="actions">
 									<li><span class="tech-tag tag-react icon brands fa-react">React</span></li>
 									<li><span class="tech-tag tag-node icon brands fa-node-js">Node.js</span></li>
 									<li><span class="tech-tag tag-ts icon solid fa-code">TypeScript</span></li>
@@ -167,7 +219,7 @@
 							<article class="col-6 col-12-xsmall work-item">
 								<a href="images/fulls/04.jpg" class="image fit thumb"><img src="images/thumbs/04.jpg" alt="Gestor de lectura" /></a>
 								<h3><a href="https://github.com/imonclus/Gestor-de-lecturas">Gestor de lectura</a></h3>
-								<ul class="actions" style="margin-bottom: 1em;">
+								<ul class="actions">
 									<li><span class="tech-tag tag-js icon brands fa-js">JavaScript</span></li>
 									<li><span class="tech-tag tag-css icon brands fa-css3-alt">CSS</span></li>
 									<li><span class="tech-tag tag-batch icon solid fa-terminal">Batchfile</span></li>
@@ -182,7 +234,7 @@
 							<article class="col-6 col-12-xsmall work-item">
 								<a href="images/fulls/05.jpg" class="image fit thumb"><img src="images/thumbs/05.jpg" alt="Fibonacci" /></a>
 								<h3><a href="https://github.com/imonclus/fibonacci">Fibonacci</a></h3>
-								<ul class="actions" style="margin-bottom: 1em;">
+								<ul class="actions">
 									<li><span class="tech-tag tag-html icon brands fa-html5">HTML5</span></li>
 									<li><span class="tech-tag tag-css icon brands fa-css3-alt">CSS3</span></li>
 									<li><span class="tech-tag tag-js icon brands fa-js">JavaScript</span></li>
@@ -197,7 +249,7 @@
 							<article class="col-6 col-12-xsmall work-item">
 								<a href="images/fulls/06.jpg" class="image fit thumb"><img src="images/thumbs/06.jpg" alt="MozartAPP" /></a>
 								<h3><a href="https://github.com/imonclus/MozartAPP">MozartAPP</a></h3>
-								<ul class="actions" style="margin-bottom: 1em;">
+								<ul class="actions">
 									<li><span class="tech-tag tag-android-studio icon solid fa-laptop-code">Android Studio</span></li>
 									<li><span class="tech-tag tag-kotlin icon brands fa-android">Kotlin</span></li>
 								</ul>
@@ -210,7 +262,7 @@
 							<article class="col-6 col-12-xsmall work-item">
 								<a href="images/fulls/07.jpg" class="image fit thumb"><img src="images/thumbs/07.jpg" alt="Nombre del proyecto" /></a>
 								<h3><a href="https://github.com/imonclus/gestor-conocimiento-filosofico/tree/master">Gestor de Conocimiento Filosófico</a></h3>
-								<ul class="actions" style="margin-bottom: 1em;">
+								<ul class="actions">
 									<li><span class="tech-tag tag-css icon brands fa-css3-alt">CSS3</span></li>
 									<li><span class="tech-tag tag-js icon brands fa-js">JavaScript</span></li>
 								</ul>
@@ -224,8 +276,8 @@
 							<article class="col-6 col-12-xsmall work-item">
 								<a href="images/fulls/08.jpg" class="image fit thumb"><img src="images/thumbs/08.jpg" alt="Generador de Historias Bilingüe" /></a>
 								<h3><a href="https://github.com/imonclus/generador-historias-espanol-bulgaro">Generador de Historias Bilingüe (Español - Búlgaro)</a></h3>			
-								<ul class="actions" style="margin-bottom: 1em;">
-									<li><span class="tech-tag tag-ts icon solid fa-code">TypeScript</span></li>
+								<ul class="actions">
+									<li><span class="tech-tag tag-jekyll icon solid fa-gem">Jekyll</span></li>
 								</ul>			
 								<p class="texto-justificado">Una aplicación web interactiva impulsada por Inteligencia Artificial diseñada para ayudar a hispanohablantes a aprender búlgaro de una forma entretenida. La aplicación utiliza los últimos modelos de Google Gemini (Gemini 2.5 Flash e Imagen 3) para generar historias, imágenes, lecciones de gramática y conjugaciones verbales al instante.</p>			
 								<ul class="actions">
@@ -237,7 +289,7 @@
 								<a href="images/fulls/09.jpg" class="image fit thumb"><img src="images/thumbs/09.jpg" alt="Nombre del proyecto" /></a>
 								<h3><a href="https://github.com/imonclus/maquina-prueba-scripts-segura">Máquina de Pruebas Automática de Scripts (Docker)</a></h3>
 			
-								<ul class="actions" style="margin-bottom: 1em;">
+								<ul class="actions">
 									<li><span class="tech-tag tag-powershell icon solid fa-terminal">PowerShell</span></li>
 									<li><span class="tech-tag tag-vbscript icon solid fa-code">VBScript</span></li>
 									<li><span class="tech-tag tag-shell icon solid fa-terminal">Shell</span></li>
@@ -256,26 +308,36 @@
 								<ul class="actions">
 									<li><a href="https://github.com/imonclus/maquina-prueba-scripts-segura" target="_blank" class="button small icon brands fa-github">Ver código</a></li>
 								</ul>
-							</article>							
+							</article>
+
+							<article class="col-6 col-12-xsmall work-item">
+								<a href="images/fulls/10.jpg" class="image fit thumb"><img src="images/thumbs/10.jpg" alt="Mi sitio de gems" /></a>
+								<h3><a href="https://github.com/imonclus/jekyll-gems">Mi sitio de gems</a></h3>			
+								<ul class="actions">
+									<li><span class="tech-tag tag-jekyll icon solid fa-gem">Jekyll</span></li>
+									<li><span class="tech-tag tag-html icon brands fa-html5">HTML5</span></li>
+									<li><span class="tech-tag tag-ruby icon solid fa-gem">Ruby</span></li>
+									<li><span class="tech-tag tag-scss icon brands fa-sass">SCSS</span></li>
+								</ul>			
+								<p class="texto-justificado">Un sitio web estático generado con Jekyll, diseñado para recopilar y exhibir de forma estructurada mis "Gemas" (configuraciones y prompts personalizados) creadas para la inteligencia artificial de Google Gemini. El proyecto aprovecha la eficiencia de Ruby y SCSS para ofrecer un catálogo visual, ligero y muy fácil de mantener mediante archivos Markdown.</p>			
+								<ul class="actions">
+									<li><a href="https://github.com/imonclus/jekyll-gems" target="_blank" class="button small icon brands fa-github">Ver código</a></li>
+									<li><a href="https://imonclus.github.io/jekyll-gems/" target="_blank" class="button small icon solid fa-external-link-alt">Ver en funcionamiento</a></li>
+								</ul>
+							</article>
+							
 													
 						</div>
 					</section>
 
+				<!-- Footer (Movido al final de la zona blanca) -->
+					<footer style="text-align: center; margin-top: 4em; padding-top: 2em; border-top: solid 2px #efefef; color: #a2a2a2; font-size: 0.9em;">
+						<ul style="list-style: none; padding: 0; margin: 0;">
+							<li style="display: inline-block;">&copy; Ignacio</li>
+							<li style="display: inline-block; border-left: solid 1px #ccc; margin-left: 0.75em; padding-left: 0.75em;">Diseño: <a href="http://html5up.net" style="color: #49bf9d;">HTML5 UP</a></li>
+						</ul>
+					</footer>
 			</div>
-
-		<!-- Footer -->
-			<footer id="footer">
-				<div class="inner">
-					<ul class="icons">
-						<li><a href="https://github.com/imonclus" target="_blank" class="icon brands fa-github"><span class="label">Github</span></a></li>
-						<li><a href="https://www.linkedin.com/in/imonclus/" target="_blank" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
-						<li><a href="mailto:tucorreo@ejemplo.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
-					</ul>
-					<ul class="copyright">
-						<li>&copy; Ignacio</li><li>Diseño: <a href="http://html5up.net">HTML5 UP</a></li>
-					</ul>
-				</div>
-			</footer>
 
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
@@ -285,13 +347,37 @@
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
 
+		<!-- Configuración del visor flotante de imágenes (Lightbox) -->
+			<script>
+				$(window).on('load', function() {
+					$('#two').poptrox({
+						caption: function($a) { return $a.next('h3').text(); }, // Usa el título del proyecto
+						overlayColor: '#1f1815', // Color de fondo oscuro (acorde al menú)
+						overlayOpacity: 0.85, // Transparencia del fondo
+						popupCloserText: '',
+						popupLoaderText: '',
+						selector: '.work-item a.thumb', // Aplica el efecto a las imágenes de proyecto
+						usePopupCaption: true,
+						usePopupDefaultStyling: false,
+						usePopupEasyClose: true, /* Permite cerrar haciendo clic en cualquier parte fuera de la imagen */
+						usePopupNav: false, /* Desactivado para que las flechas ocultas no bloqueen el clic */
+						windowMargin: 50 /* Deja un margen de 50px para que NUNCA ocupe toda la pantalla */
+					});
+
+					/* Evento para cerrar la imagen al hacer clic directamente sobre ella */
+					$('body').on('click', '.poptrox-popup img', function() {
+						$('.poptrox-popup .closer').trigger('click');
+					});
+				});
+			</script>
+
 		<!--
 		========================================================================
 		REPOSITORIO DE ETIQUETAS DE TECNOLOGÍAS (PARA REUTILIZAR)
 		========================================================================
 		Puedes copiar las líneas <li> y combinarlas dentro de un único <ul> 
 		si un proyecto usa varias tecnologías a la vez, por ejemplo:
-		<ul class="actions" style="margin-bottom: 1em;">
+		<ul class="actions">
 			<li><span class="tech-tag tag-html icon brands fa-html5">HTML5</span></li>
 			<li><span class="tech-tag tag-css icon brands fa-css3-alt">CSS3</span></li>
 			<li><span class="tech-tag tag-js icon brands fa-js">JavaScript</span></li>
@@ -309,7 +395,7 @@
 			<a href="images/fulls/07.jpg" class="image fit thumb"><img src="images/thumbs/07.jpg" alt="Nombre del proyecto" /></a>
 			<h3><a href="ENLACE_AQUI">Título de tu nuevo proyecto</a></h3>
 			
-			<ul class="actions" style="margin-bottom: 1em;">
+			<ul class="actions">
 				Pega aquí las etiquetas de tecnología que necesites 
 				<li><span class="tech-tag tag-html icon brands fa-html5">HTML5</span></li>
 			</ul>
@@ -323,34 +409,43 @@
 		</article>
 
 		Python:
-		<ul class="actions" style="margin-bottom: 1em;"><li><span class="tech-tag tag-python icon brands fa-python">Python</span></li></ul>
+		<ul class="actions"><li><span class="tech-tag tag-python icon brands fa-python">Python</span></li></ul>
 
 		PHP:
-		<ul class="actions" style="margin-bottom: 1em;"><li><span class="tech-tag tag-php icon brands fa-php">PHP</span></li></ul>
+		<ul class="actions"><li><span class="tech-tag tag-php icon brands fa-php">PHP</span></li></ul>
 
 		React:
-		<ul class="actions" style="margin-bottom: 1em;"><li><span class="tech-tag tag-react icon brands fa-react">React</span></li></ul>
+		<ul class="actions"><li><span class="tech-tag tag-react icon brands fa-react">React</span></li></ul>
 
 		Kotlin (Usando el icono de Android):
-		<ul class="actions" style="margin-bottom: 1em;"><li><span class="tech-tag tag-kotlin icon brands fa-android">Kotlin</span></li></ul>
+		<ul class="actions"><li><span class="tech-tag tag-kotlin icon brands fa-android">Kotlin</span></li></ul>
 
 		Android Studio:
-		<ul class="actions" style="margin-bottom: 1em;"><li><span class="tech-tag tag-android-studio icon solid fa-laptop-code">Android Studio</span></li></ul>
+		<ul class="actions"><li><span class="tech-tag tag-android-studio icon solid fa-laptop-code">Android Studio</span></li></ul>
 
 		C / C++ (Usando un icono de código genérico):
-		<ul class="actions" style="margin-bottom: 1em;"><li><span class="tech-tag tag-cpp icon solid fa-code">C / C++</span></li></ul>
+		<ul class="actions"><li><span class="tech-tag tag-cpp icon solid fa-code">C / C++</span></li></ul>
 
 		PowerShell:
-		<ul class="actions" style="margin-bottom: 1em;"><li><span class="tech-tag tag-powershell icon solid fa-terminal">PowerShell</span></li></ul>
+		<ul class="actions"><li><span class="tech-tag tag-powershell icon solid fa-terminal">PowerShell</span></li></ul>
 
 		VBScript:
-		<ul class="actions" style="margin-bottom: 1em;"><li><span class="tech-tag tag-vbscript icon solid fa-code">VBScript</span></li></ul>
+		<ul class="actions"><li><span class="tech-tag tag-vbscript icon solid fa-code">VBScript</span></li></ul>
 
 		Shell:
-		<ul class="actions" style="margin-bottom: 1em;"><li><span class="tech-tag tag-shell icon solid fa-terminal">Shell</span></li></ul>
+		<ul class="actions"><li><span class="tech-tag tag-shell icon solid fa-terminal">Shell</span></li></ul>
 
 		Docker:
-		<ul class="actions" style="margin-bottom: 1em;"><li><span class="tech-tag tag-docker icon brands fa-docker">Docker</span></li></ul>
+		<ul class="actions"><li><span class="tech-tag tag-docker icon brands fa-docker">Docker</span></li></ul>
+
+		Jekyll:
+		<ul class="actions"><li><span class="tech-tag tag-jekyll icon solid fa-gem">Jekyll</span></li></ul>
+
+		Ruby:
+		<ul class="actions"><li><span class="tech-tag tag-ruby icon solid fa-gem">Ruby</span></li></ul>
+
+		SCSS:
+		<ul class="actions"><li><span class="tech-tag tag-scss icon brands fa-sass">SCSS</span></li></ul>
 		========================================================================
 		-->
 	</body>
